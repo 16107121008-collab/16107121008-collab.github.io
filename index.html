@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Benim Sitem - Hakkımızda, hizmetlerimiz ve bizimle iletişim.">
+  <title>Benim Sitem | Ana Sayfa</title>
+
+  <style>
+    :root {
+      --bg: #071426;
+      --panel: #0e2038;
+      --blue: #2563eb;
+      --light: #60a5fa;
+      --text: #f1f5f9;
+      --muted: #b6c4d8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: rgba(7, 20, 38, 0.96);
+      border-bottom: 1px solid #1e3552;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--light);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--light);
+    }
+
+    .hero {
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, #153963 0%, transparent 65%);
+    }
+
+    .hero-content {
+      max-width: 760px;
+      margin: auto;
+      padding: 90px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #bfdbfe;
+      background: #142e4d;
+      border: 1px solid #274a73;
+      padding: 7px 16px;
+      border-radius: 30px;
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.7rem);
+      line-height: 1.12;
+      margin-bottom: 25px;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--light);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 32px;
+      font-size: 1.1rem;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      border: 0;
+      padding: 13px 24px;
+      border-radius: 9px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+
+    .button:hover {
+      background: #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      background: transparent;
+      border: 1px solid #45617f;
+      margin-left: 10px;
+    }
+
+    .button-outline:hover {
+      background: #142e4d;
+    }
+
+    section {
+      padding: 85px 0;
+      scroll-margin-top: 75px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      text-align: center;
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 45px;
+    }
+
+    .about {
+      background: #0a192d;
+    }
+
+    .about-content {
+      max-width: 780px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid #203954;
+      border-radius: 14px;
+      padding: 28px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--light);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .contact {
+      background: #0a192d;
+      text-align: center;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    footer {
+      padding: 25px 0;
+      text-align: center;
+      border-top: 1px solid #1e3552;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    #menu-button {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 1px solid #45617f;
+      border-radius: 7px;
+      padding: 7px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      #menu-button {
+        display: block;
+      }
+
+      nav {
+        position: relative;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: -5.5%;
+        width: 111%;
+        padding: 20px 5%;
+        background: #0e2038;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        border-bottom: 1px solid #29415e;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 500px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .button-outline {
+        margin: 12px 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Ana navigasyon">
+      <a class="logo" href="#ana-sayfa">Benim Sitem.</a>
+
+      <button id="menu-button"
+        aria-label="Menüyü aç veya kapat"
+        aria-expanded="false">
+        ☰ Menü
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#ana-sayfa">Ana Sayfa</a></li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="ana-sayfa">
+      <div class="container hero-content">
+        <span class="tag">Hoş geldin!</span>
+
+        <h1>Fikirlerini <span>gerçeğe</span> dönüştür.</h1>
+
+        <p>
+          Benim Sitem'e hoş geldin. Kendimizi tanıtıyor,
+          projelerimizi paylaşıyor ve seninle yeni fırsatlar
+          keşfetmek için çalışıyoruz.
+        </p>
+
+        <a class="button" href="#hakkimizda">Bizi Tanı</a>
+        <a class="button button-outline" href="#iletisim">İletişime Geç</a>
+      </div>
+    </section>
+
+    <section class="about" id="hakkimizda">
+      <div class="container about-content">
+        <h2 class="section-title">Hakkımızda</h2>
+        <p class="section-description">
+          Biz kimiz ve ne yapıyoruz?
+        </p>
+
+        <p>
+          Benim Sitem, fikirleri paylaşmak ve dijital dünyada
+          kendimizi ifade etmek için hazırlanan bir tanıtım sitesidir.
+        </p>
+
+        <p>
+          Amacımız sade, anlaşılır ve kullanışlı bir deneyim sunmak.
+          Bu alanı kendi hikâyen, hedeflerin ve çalışmalarınla
+          özelleştirebilirsin.
+        </p>
+      </div>
+    </section>
+
+    <section id="hizmetler">
+      <div class="container">
+        <h2 class="section-title">Neler Yapıyoruz?</h2>
+        <p class="section-description">
+          Sana sunduğumuz temel özellikleri keşfet.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💡</div>
+            <h3>Yaratıcı Fikirler</h3>
+            <p>
+              Yeni fikirleri geliştiriyor ve farklı projeler
+              için ilham verici çözümler üretiyoruz.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💻</div>
+            <h3>Dijital Çözümler</h3>
+            <p>
+              Modern teknolojilerle sade, hızlı ve kullanışlı
+              dijital deneyimler hedefliyoruz.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🤝</div>
+            <h3>Birlikte Gelişim</h3>
+            <p>
+              Fikirleri paylaşmaya, iş birliği yapmaya ve
+              sürekli öğrenmeye önem veriyoruz.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="iletisim">
+      <div class="container">
+        <h2 class="section-title">İletişime Geç</h2>
+        <p>
+          Bir fikrin veya sorun mu var? Bizimle iletişime geçebilirsin.
+        </p>
+        <button class="button" id="contact-button">
+          Bize Ulaş
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Benim Sitem. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Güncel yılı otomatik göster.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Mobil menüyü açıp kapat.
+    const menuButton = document.getElementById("menu-button");
+    const navLinks = document.getElementById("nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Menü bağlantısına basılınca mobil menüyü kapat.
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // İletişim butonu.
+    document.getElementById("contact-button").addEventListener("click", () => {
+      alert("Bize ulaşmak için kendi e-posta adresini siteye ekleyebilirsin!");
+    });
+  </script>
+</body>
+</html>
